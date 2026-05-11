@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helmet & Safety Gear Detection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a8 8 0 0 0-8 8v4c0 1.1.9 2 2 2h2v4a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-4h2a2 2 0 0 0 2-2h2c1.1 0 2-.9 2-2v-4a8 8 0 0 0-8-8z"></path></svg>
+                <h1>SafeRider AI</h1>
+            </div>
+            <p>Two-Wheeler Helmet & Safety Gear Detection via SSD MobileNet</p>
+        </header>
+
+        <main>
+            <div class="upload-section" id="upload-section">
+                <div class="drag-drop-area" id="drop-area">
+                    <svg class="upload-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                    <h3>Drag & Drop your image here</h3>
+                    <p>or</p>
+                    <label for="file-input" class="btn-primary">Browse Files</label>
+                    <input type="file" id="file-input" accept="image/*" hidden>
+                </div>
+            </div>
+
+            <div class="preview-section hidden" id="preview-section">
+                <div class="image-comparison">
+                    <div class="image-box">
+                        <h4>Original Image</h4>
+                        <img id="original-image" src="" alt="Original">
+                    </div>
+                    <div class="image-box">
+                        <h4>Detection Result</h4>
+                        <div class="loader-container hidden" id="loader">
+                            <div class="spinner"></div>
+                            <p>Analyzing...</p>
+                        </div>
+                        <img id="result-image" src="" alt="Result" class="hidden">
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    <button id="reset-btn" class="btn-secondary">Upload Another</button>
+                    <button id="detect-btn" class="btn-primary">Run Detection</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
